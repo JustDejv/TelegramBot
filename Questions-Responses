@@ -1,0 +1,39 @@
+from datetime import datetime
+import pytz
+def sample_responses(user_input):
+    input_text = str(user_input).lower()
+    if input_text in ["/start", "hi", "hi!", "hello", "hey", "ahoj"]:
+        return "Hello! My name is Patronator. I can tell u time in different states or i can tell u todays date." \
+               "U can use help if u are stuck here." \
+
+    if input_text in ["help", "?", "commands"]:
+        return "Use Time or Date in chat, so i can tell u information u want to know :)"
+
+    if input_text in ["time", "time?"]:
+        return "Do you want to know the time in Czech, England, China or New Zealand"
+    if input_text == "czech":
+        time_zone = pytz.timezone('Europe/Prague')
+        now = datetime.now(time_zone)
+        return "Current time in Czech is  -  " + now.strftime('%H : %M : %S')
+    if input_text == "new zealand":
+        time_zone = pytz.timezone('Pacific/Auckland')
+        now = datetime.now(time_zone)
+        return "Current time in New Zealand is  -   " + now.strftime('%H : %M : %S')
+    if input_text == "china":
+        time_zone = pytz.timezone('Asia/Shanghai')
+        now = datetime.now(time_zone)
+        return "Current time in China is  -   " + now.strftime('%H : %M : %S')
+    if input_text == "england":
+        time_zone = pytz.timezone('Europe/London')
+        now = datetime.now(time_zone)
+        return "Current time in England is -  " + now.strftime('%H : %M : %S')
+    if input_text in ["united states", "us","usa"]:
+        time_zone = pytz.timezone('America/New_York')
+        now = datetime.now(time_zone)
+        return "Current time in US is  -  " + now.strftime('%H : %M : %S')
+    if input_text in ["date", "date?,","year,","year?,"]:
+        date = datetime.now()
+        return date.strftime('%d %B %Y')
+    if input_text in ["bye", "ttyl", "good bye"]:
+        return "Hope I was helpful. Have a nice day/evening!"
+    return "Sorry,I didn't understand you, can u try again ?"
