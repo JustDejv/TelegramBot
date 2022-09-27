@@ -1,2 +1,2 @@
 # TelegramBot
-Its a bot
+Its a basic bot, which can tell u time or current date.
